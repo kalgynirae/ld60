@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   createInitialPlaceholders();
+
+  document.querySelector(".client-accept-request").addEventListener('click', () => {
+  	closeClientAsk();
+  });
 });
 
 function createPlaceholder() {
@@ -62,7 +66,7 @@ const dialogTracks = {
   "ashley": {
     "always": [
       "do you know the STAR * BOYZ?? ofcourse you do everyone does their the best!!! can you add a bunch of stuff for them?? i L.O.V.E. kyle soooo much!!! he doesn't know it yet but he's my husband!!!",
-      "hiii so i was thinking that i should talk more about the love of my life oreo. he's my precious baby and i've had him since i was 7 and he's the bestest. please add my furbaby to my homepage <3",
+      "hiii so i was thinking that i should talk more about the love of my life oreo. he's my precious baby and i've had him since i was 7 and he's the bestest. please add my furbaby to my homepage thxx <3",
       "could you pick a kool and pretty and cute and awesome photo of me to use as a profile photo? like if kyle came across my homepage ,,,,,maybe he'd fall in love with me??? i read in a mag that his type is shorter than him and has nice eyes and a cool vibe and liek that totally describes me???",
     ],
     "sometimes": [
@@ -71,36 +75,45 @@ const dialogTracks = {
   },
 };
 
-// todos
-// accept request button
-// shadow photo and name
-
 let isInDialogState = false;
 
 const showClientAsk = () => {
   const client = document.querySelector(".client");
   client.style.visibility = "visible";
 
-  const totallyRandomSelection = Math.floor(Math.random() * dialogTracks["ashley"]["always"].length);
-  const text = dialogTracks["ashley"]["always"][totallyRandomSelection];
-  client.innerHTML = '';
+  const selectedClient = "ashley";
+  const totallyRandomSelection = Math.floor(Math.random() * dialogTracks[selectedClient]["always"].length);
+  const text = dialogTracks[selectedClient]["always"][totallyRandomSelection];
+
+  const clientName = document.querySelector(".client-name");
+  clientName.innerHTML = selectedClient.charAt(0).toUpperCase() + selectedClient.slice(1);
+
+  const clientTextbox = document.querySelector(".client-textbox");
+  clientTextbox.innerHTML = '';
 
   text.split('').forEach((char, index) => {
     const span = document.createElement('span');
     span.classList.add('client-text')
     span.textContent = char;
     span.style.transitionDelay = `${index * 40}ms`;
-    client.appendChild(span);
+    clientTextbox.appendChild(span);
 
     setTimeout(() => {
       span.style.opacity = '1';
     }, 50);
   });
+
+  setTimeout(() => {
+	  const acceptRequest = document.querySelector(".client-accept-request");
+	  acceptRequest.style.visibility = "visible";
+  }, text.length * 40 + 100);
 };
 
 const closeClientAsk = () => {
   const client = document.querySelector(".client");
   client.style.visibility = "hidden";
+  const acceptRequest = document.querySelector(".client-accept-request");
+  acceptRequest.style.visibility = "hidden";
   isInDialogState = false;
 };
 
@@ -130,14 +143,12 @@ const playPhoneRingingAnimation = () => {
   }, 750);
 };
 
-// Trigger phone ringing animation
 document.addEventListener('keydown', (event) => {
   if (event.key === 'c') {
     playPhoneRingingAnimation();
   }
 });
 
-// Close client ask
 document.addEventListener('keydown', (event) => {
   if (event.key === 'v') {
     closeClientAsk();

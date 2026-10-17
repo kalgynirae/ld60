@@ -151,10 +151,47 @@ html {
 	background: pink;
 
 	visibility: hidden;
+
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+.client-photo-box {
+	margin: 1rem;
+
+	display: grid;
+	place-items: center;
+}
+
+.client-photo {
+	width: 120px;
+	height: 120px;
+
+	background: darkgrey;
+}
+
+.client-name {
+    font-size: 32px;
+}
+
+.client-textbox-box {
+	display: grid;
+	grid-template-rows: 1fr auto;
+}
+
+.client-accept-request {
+	background: grey;
+	font-size: 20px;
+	padding: 6px;
+	visibility: hidden;
+}
+
+.client-accept-request:hover {
+  background: darkgrey;
 }
 
 .client-text {
-    font-size: 32px;
+    font-size: 24px;
     opacity: 0;
     transition: opacity 0.1s;
 }
