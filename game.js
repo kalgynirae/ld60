@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+let isInDialogState = false;
+
 const showClientAsk = () => {
   const client = document.querySelector(".client");
   client.style.visibility = "visible";
@@ -36,9 +38,15 @@ const showClientAsk = () => {
 const closeClientAsk = () => {
   const client = document.querySelector(".client");
   client.style.visibility = "hidden";
+  isInDialogState = false;
 };
 
 const playPhoneRingingAnimation = () => {
+  if (isInDialogState) {
+    return;
+  }
+  isInDialogState = true;
+
   const phone = document.querySelector(".phone");
   phone.style.visibility = "visible";
 
