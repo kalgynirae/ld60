@@ -58,20 +58,37 @@ function createInitialPlaceholders() {
   });
 }
 
+const dialogTracks = {
+  "ashley": {
+    "always": [
+      "do you know the STAR * BOYZ?? ofcourse you do everyone does their the best!!! can you add a bunch of stuff for them?? i L.O.V.E. kyle soooo much!!! he doesn't know it yet but he's my husband!!!",
+      "hiii so i was thinking that i should talk more about the love of my life oreo. he's my precious baby and i've had him since i was 7 and he's the bestest. please add my furbaby to my homepage <3",
+      "could you pick a kool and pretty and cute and awesome photo of me to use as a profile photo? like if kyle came across my homepage ,,,,,maybe he'd fall in love with me??? i read in a mag that his type is shorter than him and has nice eyes and a cool vibe and liek that totally describes me???",
+    ],
+    "sometimes": [
+      "i saw that everyone has a best friends section so i wuz thinking that i should have one too and i'd like to put my bestie jessica at the top because i luvluvluv that girl to death!!!",
+    ],
+  },
+};
+
+// todos
+// accept request button
+// shadow photo and name
+
 let isInDialogState = false;
 
 const showClientAsk = () => {
   const client = document.querySelector(".client");
   client.style.visibility = "visible";
 
-  const text = 'i have an unreasonable ask for you. (press v to accept)';
+  const totallyRandomSelection = Math.floor(Math.random() * dialogTracks["ashley"]["always"].length);
+  const text = dialogTracks["ashley"]["always"][totallyRandomSelection];
   client.innerHTML = '';
 
   text.split('').forEach((char, index) => {
     const span = document.createElement('span');
+    span.classList.add('client-text')
     span.textContent = char;
-    span.style.opacity = '0';
-    span.style.transition = 'opacity 0.1s';
     span.style.transitionDelay = `${index * 40}ms`;
     client.appendChild(span);
 

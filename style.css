@@ -146,10 +146,17 @@ html {
 	left: 6px;
 	width: 1012px;
 	height: 234px;
+	padding: 6px;
 
-	background: green;
+	background: pink;
 
 	visibility: hidden;
+}
+
+.client-text {
+    font-size: 32px;
+    opacity: 0;
+    transition: opacity 0.1s;
 }
 
 @font-face {
