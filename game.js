@@ -15,23 +15,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!e.target.classList.contains("c")) return;
     document.querySelectorAll(".placeholder").forEach((placeholder) => {
       placeholder.style.display = "block";
-      placeholder.addEventListener("dragover", placeholderDragover);
-      placeholder.addEventListener("drop", placeholderDrop);
       e.dataTransfer.setData("text/html", e.target.querySelector(".contents").innerHTML);
     });
   });
   document.addEventListener("dragend", (e) => {
-    if (!e.target.classList.contains("c")) return;
     document.querySelectorAll(".placeholder").forEach((placeholder) => {
       placeholder.style.display = "none";
-      placeholder.removeEventListener("dragover", placeholderDragover);
-      placeholder.removeEventListener("drop", placeholderDrop);
     });
   });
+
+  createInitialPlaceholders();
 });
 
-function placeholderDragover(event) {
-  event.preventDefault();
+function createPlaceholder() {
+  const placeholder = document.createElement("div");
+  placeholder.classList.add("placeholder");
+  placeholder.style.display = "none";
+  placeholder.textContent = "[drop here]";
+  placeholder.addEventListener("dragover", (e) => e.preventDefault());
+  placeholder.addEventListener("drop", placeholderDrop);
+  return placeholder;
 }
 
 function placeholderDrop(event) {
@@ -41,7 +44,18 @@ function placeholderDrop(event) {
   const newdiv = document.createElement("div");
   newdiv.classList.add("b");
   newdiv.innerHTML = html;
-  placeholder.replaceWith(newdiv);
+  placeholder.replaceWith(createPlaceholder(), newdiv, createPlaceholder());
+}
+
+function createInitialPlaceholders() {
+  document.querySelectorAll(".columns > div").forEach((div) => {
+    div.prepend(createPlaceholder());
+    Array.from(div.children).forEach((e) => {
+      if (!e.classList.contains("placeholder")) {
+        e.after(createPlaceholder());
+      }
+    });
+  });
 }
 
 let isInDialogState = false;
