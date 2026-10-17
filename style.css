@@ -25,16 +25,18 @@ html {
 
 .monitor {
 	position: absolute;
-	top: 58px;
+	top: 56px;
 	left: 56px;
-	width: 556px;
+	width: 554px;
 	height: 410px;
 
 	background: white;
+	border-radius: 3px;
+	box-shadow: inset 0 0 60px 0px rgb(40 40 40 / 0.6);
 	color: black;
-	/* font-family: "DejaVu Sans"; */
-	font-family: "Gelasio";
+	font-size: 0.9rem;
 	text-align: left;
+	padding: 0.5rem;
 
 	overflow: scroll;
 	scrollbar-gutter: stable;
@@ -111,7 +113,7 @@ html {
 
 .sans {
 	font-family: "DejaVu Sans";
-	line-height: 1;
+	line-height: 0.85;
 }
 
 @font-face {
@@ -130,5 +132,5 @@ html {
 
 .serif {
 	font-family: "Gelasio";
-	line-height: 1;
+	line-height: 0.9;
 }
