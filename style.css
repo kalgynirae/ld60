@@ -151,6 +151,7 @@ html {
 	background: pink;
 
 	visibility: hidden;
+	opacity: 0.96;
 
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -179,15 +180,29 @@ html {
 	grid-template-rows: 1fr auto;
 }
 
+.client-textbox {
+	text-align: left;
+}
+
 .client-accept-request {
 	background: grey;
 	font-size: 20px;
 	padding: 6px;
+
+	cursor: pointer;
+
+	opacity: 0;
 	visibility: hidden;
 }
 
+.client-accept-request.show {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.2s;
+}
+
 .client-accept-request:hover {
-  background: darkgrey;
+	background: lightgrey;
 }
 
 .client-text {
