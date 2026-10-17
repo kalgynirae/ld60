@@ -15,7 +15,7 @@ html {
 
 	position: relative;
 
-	background-image: url(./placeholder-backdrop.svg);
+	background-image: url(/placeholder-backdrop.svg);
 }
 
 .backdrop {
@@ -34,7 +34,7 @@ html {
 	border-radius: 3px;
 	box-shadow: inset 0 0 60px 0px rgb(40 40 40 / 0.6);
 	color: black;
-	font-size: 0.9rem;
+	font-size: 13px;
 	text-align: left;
 	padding: 0.5rem;
 
@@ -57,7 +57,7 @@ html {
 	text-align: left;
 
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: auto 1fr;
 
 	details {
@@ -80,7 +80,7 @@ html {
 }
 
 @font-face {
-	src: url("./fonts/DejaVuSans.woff2") format("woff2");
+	src: url("/fonts/DejaVuSans.woff2") format("woff2");
 	font-family: "DejaVu Sans";
 	font-style: normal;
 	font-weight: 400;
@@ -88,7 +88,7 @@ html {
 }
 
 @font-face {
-	src: url("./fonts/DejaVuSans-Oblique.woff2") format("woff2");
+	src: url("/fonts/DejaVuSans-Oblique.woff2") format("woff2");
 	font-family: "DejaVu Sans";
 	font-style: oblique;
 	font-weight: 400;
@@ -96,7 +96,7 @@ html {
 }
 
 @font-face {
-	src: url("./fonts/DejaVuSans-Bold.woff2") format("woff2");
+	src: url("/fonts/DejaVuSans-Bold.woff2") format("woff2");
 	font-family: "DejaVu Sans";
 	font-style: normal;
 	font-weight: 700;
@@ -104,33 +104,33 @@ html {
 }
 
 @font-face {
-	src: url("./fonts/DejaVuSans-BoldOblique.woff2") format("woff2");
+	src: url("/fonts/DejaVuSans-BoldOblique.woff2") format("woff2");
 	font-family: "DejaVu Sans";
 	font-style: oblique;
 	font-weight: 700;
 	size-adjust: 90%;
 }
 
-.sans {
+.font-sans {
 	font-family: "DejaVu Sans";
-	line-height: 0.85;
+	line-height: 13px;
 }
 
 @font-face {
-	src: url("./fonts/Gelasio[wght].woff2") format("woff2");
+	src: url("/fonts/Gelasio[wght].woff2") format("woff2");
 	font-family: "Gelasio";
 	font-style: normal;
 	font-weight: 400 700;
 }
 
 @font-face {
-	src: url("./fonts/Gelasio-Italic[wght].woff2") format("woff2");
+	src: url("/fonts/Gelasio-Italic[wght].woff2") format("woff2");
 	font-family: "Gelasio";
 	font-style: italic;
 	font-weight: 400 700;
 }
 
-.serif {
+.font-serif {
 	font-family: "Gelasio";
-	line-height: 0.9;
+	line-height: 14px;
 }
