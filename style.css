@@ -1,76 +1,134 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-  background: black;
-  color: white;
-  text-align: center;
+	background: black;
+	color: white;
+	text-align: center;
 }
 
 .gamearea {
-  width: 1024px;
-  height: 768px;
-  margin: auto;
+	width: 1024px;
+	height: 768px;
+	margin: auto;
 
-  position: relative;
+	position: relative;
 
-  background-image: url(placeholder-backdrop.svg);
+	background-image: url(./placeholder-backdrop.svg);
 }
 
 .backdrop {
-  position: absolute;
-  z-index: -1;
+	position: absolute;
+	z-index: -1;
 }
 
 .monitor {
-  position: absolute;
-  top: 58px;
-  left: 56px;
-  width: 556px;
-  height: 410px;
+	position: absolute;
+	top: 58px;
+	left: 56px;
+	width: 556px;
+	height: 410px;
 
-  background: white;
-  color: black;
-  text-align: left;
+	background: white;
+	color: black;
+	/* font-family: "DejaVu Sans"; */
+	font-family: "Gelasio";
+	text-align: left;
 
-  overflow: scroll;
-  scrollbar-gutter: stable;
-  scrollbar-color: darkgreen grey;
+	overflow: scroll;
+	scrollbar-gutter: stable;
+	scrollbar-color: darkgreen grey;
 }
 
 .notepad {
-  position: absolute;
-  top: 16px;
-  right: 0;
-  width: 340px;
-  height: 517px;
+	position: absolute;
+	top: 16px;
+	right: 0;
+	width: 340px;
+	height: 517px;
 
-  /* background-color: red; */
+	/* background-color: red; */
 
-  color: black;
-  padding: 0.5em;
-  text-align: left;
+	color: black;
+	padding: 0.5em;
+	text-align: left;
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto 1fr;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: auto 1fr;
 
-  details {
-    grid-column: 1 / -1;
-    grid-row: 1 / 3;
+	details {
+		grid-column: 1 / -1;
+		grid-row: 1 / 3;
 
-    display: contents;
+		display: contents;
 
-    summary {
-      grid-row: 1;
-    }
+		summary {
+			grid-row: 1;
+		}
 
-    &[open]::details-content {
-      grid-column: 1 / -1;
-      grid-row: 2;
+		&[open]::details-content {
+			grid-column: 1 / -1;
+			grid-row: 2;
 
-      /* background: green; */
-    }
-  }
+			/* background: green; */
+		}
+	}
+}
+
+@font-face {
+	src: url("./fonts/DejaVuSans.woff2") format("woff2");
+	font-family: "DejaVu Sans";
+	font-style: normal;
+	font-weight: 400;
+	size-adjust: 90%;
+}
+
+@font-face {
+	src: url("./fonts/DejaVuSans-Oblique.woff2") format("woff2");
+	font-family: "DejaVu Sans";
+	font-style: oblique;
+	font-weight: 400;
+	size-adjust: 90%;
+}
+
+@font-face {
+	src: url("./fonts/DejaVuSans-Bold.woff2") format("woff2");
+	font-family: "DejaVu Sans";
+	font-style: normal;
+	font-weight: 700;
+	size-adjust: 90%;
+}
+
+@font-face {
+	src: url("./fonts/DejaVuSans-BoldOblique.woff2") format("woff2");
+	font-family: "DejaVu Sans";
+	font-style: oblique;
+	font-weight: 700;
+	size-adjust: 90%;
+}
+
+.sans {
+	font-family: "DejaVu Sans";
+	line-height: 1;
+}
+
+@font-face {
+	src: url("./fonts/Gelasio[wght].woff2") format("woff2");
+	font-family: "Gelasio";
+	font-style: normal;
+	font-weight: 400 700;
+}
+
+@font-face {
+	src: url("./fonts/Gelasio-Italic[wght].woff2") format("woff2");
+	font-family: "Gelasio";
+	font-style: italic;
+	font-weight: 400 700;
+}
+
+.serif {
+	font-family: "Gelasio";
+	line-height: 1;
 }
