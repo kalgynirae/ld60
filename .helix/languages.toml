@@ -1,3 +1,6 @@
+[language-server.vscode-html-language-server.config]
+provideFormatter = false
+
 [language-server.vscode-css-language-server.config]
 css.validate.enable = true
 format.insertFinalNewline = true
