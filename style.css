@@ -43,6 +43,24 @@ html {
 	scrollbar-color: darkgreen grey;
 }
 
+.columns {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 0.5rem;
+}
+
+.placeholder {
+	display: none;
+	background: #d0d0f0;
+	border: dashed 2px grey;
+	padding-inline: 0.2rem;
+	padding-block: 0.5rem;
+
+	&.active {
+		background: white;
+	}
+}
+
 .notepad {
 	position: absolute;
 	top: 16px;
@@ -91,7 +109,7 @@ html {
 		row-gap: 0.2rem;
 	}
 
-	li {
+	.c {
 		flex: initial;
 		list-style-type: none;
 		padding: 0.2rem;
@@ -102,6 +120,10 @@ html {
 
 		&:hover {
 			background: linear-gradient(to bottom, #e0f5ff 20%, #b0abe5 100%);
+		}
+
+		.contents {
+			display: none;
 		}
 	}
 }
