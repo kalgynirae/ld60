@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+.gamearea {
+  width: 1024px;
+  height: 768px;
+  margin: auto;
+
+  position: relative;
+
+  background-image: url(placeholder-backdrop.svg);
+}
+
+.backdrop {
+  position: absolute;
+  z-index: -1;
+}
+
+.monitor {
+  position: absolute;
+  top: 58px;
+  left: 56px;
+  width: 556px;
+  height: 410px;
+
+  background: white;
+  color: black;
+  text-align: left;
+
+  overflow: scroll;
+  scrollbar-gutter: stable;
+  scrollbar-color: darkgreen grey;
+}
+
+.notepad {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  width: 340px;
+  height: 517px;
+
+  /* background-color: red; */
+
+  color: black;
+  padding: 0.5em;
+  text-align: left;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr;
+
+  details {
+    grid-column: 1 / -1;
+    grid-row: 1 / 3;
+
+    display: contents;
+
+    summary {
+      grid-row: 1;
+    }
+
+    &[open]::details-content {
+      grid-column: 1 / -1;
+      grid-row: 2;
+
+      /* background: green; */
+    }
+  }
+}
