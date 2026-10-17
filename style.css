@@ -79,6 +79,30 @@ html {
 	}
 }
 
+.phone {
+	position: absolute;
+	top: 565px;
+    left: 740px;
+    width: 74px;
+    height: 165px;
+
+	background: red;
+
+	visibility: hidden;
+}
+
+.client {
+	position: absolute;
+	top: 526px;
+    left: 6px;
+    width: 1012px;
+    height: 234px;
+
+	background: green;
+
+	visibility: hidden;
+}
+
 @font-face {
 	src: url("/fonts/DejaVuSans.woff2") format("woff2");
 	font-family: "DejaVu Sans";
