@@ -79,12 +79,30 @@ html {
 	}
 }
 
+.palette {
+	ul {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-flow: row wrap;
+		column-gap: 0.2rem;
+		row-gap: 0.2rem;
+	}
+
+	li {
+		flex: initial;
+		list-style-type: none;
+		border: solid 1px black;
+		padding: 0.2rem;
+	}
+}
+
 .phone {
 	position: absolute;
 	top: 565px;
-    left: 740px;
-    width: 74px;
-    height: 165px;
+	left: 740px;
+	width: 74px;
+	height: 165px;
 
 	background: red;
 
@@ -94,9 +112,9 @@ html {
 .client {
 	position: absolute;
 	top: 526px;
-    left: 6px;
-    width: 1012px;
-    height: 234px;
+	left: 6px;
+	width: 1012px;
+	height: 234px;
 
 	background: green;
 
