@@ -59,6 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll('input[name=homepage-background]').forEach((input) => {
+    input.addEventListener("change", (e) => {
+      if (input.checked) {
+        document.querySelector(".monitor").style.background = input.value;
+      }
+    });
+  });
+
   document.querySelectorAll(".placeable").forEach((placeable) => {
     placeable.draggable = true;
   });
