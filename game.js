@@ -34,6 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   selectClient("ashley");
 
+  document.querySelector(".select-ashley").addEventListener('click', () => {
+	  selectClient("ashley");
+  });
+  document.querySelector(".select-grandma").addEventListener('click', () => {
+	  selectClient("grandma");
+  });
+  document.querySelector(".select-kyle").addEventListener('click', () => {
+  	selectClient("kyle");
+  });
+  document.querySelector(".ring-phone").addEventListener('click', () => {
+		playPhoneRingingAnimation();
+  });
+
   document.querySelector(".client-accept-request").addEventListener('click', () => {
   	closeClientAsk();
   });
@@ -93,8 +106,17 @@ const dialogTracks = {
   },
   "kyle": {
   	"intro": "hi im kyle",
-  	"always": [],
-   	"sometimes": [],
+  	"always": [
+	   	[
+	    	"sup so my manager just called. he says I should make a mykoolhomepage to help promote the STAR * BOYZ upcoming album. ugh. im hiring you to do it cuz i cant be arsed",
+	     	"sup im kyle. you might have heard of me…. im in the STAR * BOYZ……. i want to make a profile that can't be traced back to me. MAKE SURE THERE IS NOTHING ON THERE ABOUT THE STAR * BOYZ. im sick of us",
+	    ],
+			"could u add a profile photo of me? u know what i look like, right? no? well im kind of a dark and brooding type. super tall. SUPER buff,,,, yeah",
+	   ],
+   	"sometimes": [
+    	"hey i saw you put some kind of colorful stuff on there. that's okay i guess but could you add some more stuff thats black? black is the color of my soul",
+     	"hey i just got home from a press trip to the usa. i don't want anyone to think im from that country can u add some british stuff to my profile???",
+    ],
     "background-color": "rgba(40, 40, 43, 0.95)",
   },
 };
@@ -117,10 +139,18 @@ let isInDialogState = false;
 
 const getClientText = () => {
 	if (sometimesIndex < selectedClientSometimesDialogs.length && Math.random() < selectedClientSometimesDialogs.length / (selectedClientSometimesDialogs.length + selectedClientAlwaysDialogs.length * 2)) {
-		return selectedClientSometimesDialogs[sometimesIndex++];
+		const dialog = selectedClientSometimesDialogs[sometimesIndex++];
+		if (Array.isArray(dialog)) {
+			return dialog[Math.floor(Math.random() * dialog.length)];
+		}
+		return dialog;
 	}
 	if (alwaysIndex < selectedClientAlwaysDialogs.length) {
-    return selectedClientAlwaysDialogs[alwaysIndex++];
+    const dialog = selectedClientAlwaysDialogs[alwaysIndex++];
+    if (Array.isArray(dialog)) {
+			return dialog[Math.floor(Math.random() * dialog.length)];
+		}
+		return dialog;
 	}
   return "i'm out of ideas. do whatever else you'd like...!";
 };
