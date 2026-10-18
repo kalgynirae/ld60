@@ -67,23 +67,29 @@ function createPlaceholder() {
   return placeholder;
 }
 
-function placeholderDrop(event) {
-  event.preventDefault();
-  const placeholder = event.target.parentElement;
-  const html = event.dataTransfer.getData("text/html");
+function createContentItem(html) {
   const newdiv = document.createElement("div");
   newdiv.classList.add("content-item");
   newdiv.innerHTML = html;
 
   const controls = document.createElement("div");
   controls.classList.add("controls");
+
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove";
   deleteButton.addEventListener("click", () => deleteItem(newdiv));
   controls.append(deleteButton);
+
   newdiv.prepend(controls);
 
-  placeholder.replaceWith(createPlaceholder(), newdiv, createPlaceholder());
+  return newdiv;
+}
+
+function placeholderDrop(event) {
+  event.preventDefault();
+  const placeholder = event.target.parentElement;
+  const html = event.dataTransfer.getData("text/html");
+  placeholder.replaceWith(createPlaceholder(), createContentItem(html), createPlaceholder());
 }
 
 function deleteItem(item) {
@@ -93,7 +99,8 @@ function deleteItem(item) {
 
 function createInitialPlaceholders() {
   document.querySelectorAll(".columns > div").forEach((div) => {
-    div.prepend(createPlaceholder());
+    div.append(createPlaceholder());
+    div.append(createContentItem("<p>(Drag content here to place it!)</p>"));
     Array.from(div.children).forEach((e) => {
       if (!e.classList.contains("placeholder")) {
         e.after(createPlaceholder());

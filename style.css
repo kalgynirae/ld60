@@ -58,6 +58,7 @@ html {
 		display: flex;
 		flex-direction: column;
 		padding-bottom: 10rem;
+		text-align: center;
 	}
 
 	h1,
@@ -80,7 +81,8 @@ html {
 		background: rgb(70% 80% 90% / 0.7);
 		border: dashed 2px grey;
 		overflow: hidden;
-		transform: translateY(-0.5rem);
+		height: 2rem;
+		transform: translateY(-1rem);
 		z-index: 5;
 		text-align: center;
 	}
@@ -123,7 +125,7 @@ html {
 	text-align: left;
 
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: auto 1fr;
 
 	details {
@@ -146,9 +148,8 @@ html {
 }
 
 .palette {
-	font-family: "DejaVu Sans";
-
 	ul {
+		font-family: "DejaVu Sans";
 		margin: 0;
 		padding: 0;
 		display: flex;
