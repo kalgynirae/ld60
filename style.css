@@ -109,7 +109,7 @@ html {
 		row-gap: 0.2rem;
 	}
 
-	.c {
+	.placeable {
 		flex: initial;
 		list-style-type: none;
 		padding: 0.2rem;
@@ -172,7 +172,7 @@ html {
 }
 
 .client-name {
-    font-size: 32px;
+	font-size: 32px;
 }
 
 .client-textbox-box {
@@ -206,9 +206,9 @@ html {
 }
 
 .client-text {
-    font-size: 24px;
-    opacity: 0;
-    transition: opacity 0.1s;
+	font-size: 24px;
+	opacity: 0;
+	transition: opacity 0.1s;
 }
 
 @font-face {

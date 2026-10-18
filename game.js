@@ -11,8 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll(".placeable").forEach((placeable) => {
+    placeable.draggable = true;
+  });
+  document.querySelectorAll(".placeable img").forEach((placeable) => {
+    placeable.draggable = false;
+  });
   document.addEventListener("dragstart", (e) => {
-    if (!e.target.classList.contains("c")) return;
+    if (!e.target.classList.contains("placeable")) return;
     document.querySelectorAll(".placeholder").forEach((placeholder) => {
       placeholder.style.display = "block";
       e.dataTransfer.setData("text/html", e.target.querySelector(".contents").innerHTML);
