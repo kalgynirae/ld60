@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createInitialPlaceholders();
 
+  selectClient("ashley");
+
   document.querySelector(".client-accept-request").addEventListener('click', () => {
   	closeClientAsk();
   });
@@ -72,6 +74,7 @@ function createInitialPlaceholders() {
 
 const dialogTracks = {
   "ashley": {
+  	"intro": "hi im ashley",
     "always": [
       "do you know the STAR * BOYZ?? ofcourse you do everyone does their the best!!! can you add a bunch of stuff for them?? i L.O.V.E. kyle soooo much!!! he doesn't know it yet but he's my husband!!!",
       "hiii so i was thinking that i should talk more about the love of my life oreo!!! he's my precious baby and i've had him since i was 7 and he's the bestest. please add my furbaby to my homepage thxx <3",
@@ -80,13 +83,35 @@ const dialogTracks = {
     "sometimes": [
       "i saw that everyone has a best friends section so i wuz thinking that i should have one too and i'd like to put my bestie jessica at the top because i luvluvluv that girl to death!!!",
     ],
+    "background-color": "rgba(48, 127, 253, 0.95)",
+  },
+  "grandma": {
+  	"intro": "hi im grandma",
+  	"always": [],
+   	"sometimes": [],
+    "background-color": "rgba(255, 133, 163, 0.95)",
+  },
+  "kyle": {
+  	"intro": "hi im kyle",
+  	"always": [],
+   	"sometimes": [],
+    "background-color": "rgba(40, 40, 43, 0.95)",
   },
 };
-let selectedClient = "ashley";
-let selectedClientAlwaysDialogs = getShuffledCopy(dialogTracks[selectedClient]["always"]);
+let selectedClient = "";
+let selectedClientAlwaysDialogs = [];
 let alwaysIndex = 0;
-let selectedClientSometimesDialogs = getShuffledCopy(dialogTracks[selectedClient]["sometimes"]);
+let selectedClientSometimesDialogs = [];
 let sometimesIndex = 0;
+
+const selectClient = clientName => {
+	selectedClient = clientName;
+	selectedClientAlwaysDialogs = getShuffledCopy(dialogTracks[selectedClient]["always"]);
+	alwaysIndex = 0;
+	selectedClientSometimesDialogs = getShuffledCopy(dialogTracks[selectedClient]["sometimes"]);
+	sometimesIndex = 0;
+	document.querySelector(".client").style.backgroundColor = dialogTracks[selectedClient]["background-color"];
+};
 
 let isInDialogState = false;
 

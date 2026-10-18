@@ -173,10 +173,7 @@ html {
 	height: 234px;
 	padding: 6px;
 
-	background: pink;
-
 	visibility: hidden;
-	opacity: 0.96;
 
 	display: grid;
 	grid-template-columns: auto 1fr;
