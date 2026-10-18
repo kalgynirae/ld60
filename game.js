@@ -3,10 +3,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll('input[name=font-family]').forEach((input) => {
     input.addEventListener("change", (e) => {
-        if (input.checked) {
+      if (input.checked) {
         content.classList.remove("font-sans");
         content.classList.remove("font-serif");
         content.classList.add(`font-${input.value}`);
+      }
+    });
+  });
+
+  document.querySelectorAll('input[name=num-columns]').forEach((input) => {
+    input.addEventListener("change", (e) => {
+      if (input.checked) {
+      	const thirdColumn = document.querySelector(".third-column");
+        const columns = document.querySelector(".columns");
+      	if (input.value === "three") {
+       		thirdColumn.style.visibility = "visible";
+         	columns.style.gridTemplateColumns = "repeat(3, 1fr)";
+       	} else {
+        	thirdColumn.style.visibility = "hidden";
+        	columns.style.gridTemplateColumns = "repeat(2, 1fr)";
+        }
       }
     });
   });
