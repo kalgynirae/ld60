@@ -40,22 +40,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".select-ashley").addEventListener('click', () => {
 	  selectClient("ashley");
-		playPhoneRingingAnimation(true);
+		ringPhone();
   });
   document.querySelector(".select-grandma").addEventListener('click', () => {
 	  selectClient("grandma");
-		playPhoneRingingAnimation(true);
+		ringPhone();
   });
   document.querySelector(".select-kyle").addEventListener('click', () => {
   	selectClient("kyle");
-	  playPhoneRingingAnimation(true);
+	  ringPhone();
   });
   document.querySelector(".ring-phone").addEventListener('click', () => {
-		playPhoneRingingAnimation(false);
+		ringPhone();
   });
 
   document.querySelector(".client-accept-request").addEventListener('click', () => {
   	closeClientAsk();
+  });
+
+  const phone = document.querySelector(".phone");
+  phone.addEventListener("click", () => {
+    if (dialogState != "ringing") return;
+    dialogState = "speaking";
+    phone.classList.remove("ringing");
+    document.querySelector(".phone-background").classList.remove("ringing");
+    showClientAsk();
   });
 });
 
@@ -152,11 +161,13 @@ const dialogTracks = {
 };
 let selectedClient = "";
 let selectedClientAlwaysDialogs = [];
+let isNewClient = true;
 let alwaysIndex = 0;
 let selectedClientSometimesDialogs = [];
 let sometimesIndex = 0;
 
 const selectClient = clientName => {
+  isNewClient = true;
 	selectedClient = clientName;
 	selectedClientAlwaysDialogs = getShuffledCopy(dialogTracks[selectedClient]["always"]);
 	alwaysIndex = 0;
@@ -165,7 +176,7 @@ const selectClient = clientName => {
 	document.querySelector(".client").style.backgroundColor = dialogTracks[selectedClient]["background-color"];
 };
 
-let isInDialogState = false;
+let dialogState = "none";
 
 const getClientText = () => {
 	if (sometimesIndex < selectedClientSometimesDialogs.length && Math.random() < selectedClientSometimesDialogs.length / (selectedClientSometimesDialogs.length + selectedClientAlwaysDialogs.length * 2)) {
@@ -185,7 +196,7 @@ const getClientText = () => {
   return "i'm out of ideas. do whatever else you'd like...!";
 };
 
-const showClientAsk = isNewClient => {
+const showClientAsk = () => {
   const client = document.querySelector(".client");
   client.style.visibility = "visible";
 
@@ -230,38 +241,19 @@ const closeClientAsk = () => {
   client.style.visibility = "hidden";
   const acceptRequest = document.querySelector(".client-accept-request");
   acceptRequest.classList.remove("show");
-  isInDialogState = false;
+  dialogState = "none";
 };
 
-const playPhoneRingingAnimation = isNewClient => {
-  if (isInDialogState) {
-    return;
-  }
-  isInDialogState = true;
-
-  const phone = document.querySelector(".phone");
-  phone.style.visibility = "visible";
-
-  setTimeout(() => {
-      phone.style.visibility = "hidden";
-
-      setTimeout(() => {
-          phone.style.visibility = "visible";
-
-          setTimeout(() => {
-              phone.style.visibility = "hidden";
-
-              setTimeout(() => {
-                  showClientAsk(isNewClient);
-              }, 750);
-          }, 750);
-      }, 750);
-  }, 750);
+const ringPhone = () => {
+  if (dialogState != "none") return;
+  dialogState = "ringing";
+  document.querySelector(".phone").classList.add("ringing");
+  document.querySelector(".phone-background").classList.add("ringing");
 };
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'c') {
-    playPhoneRingingAnimation(false);
+    ringPhone();
   }
 });
 
