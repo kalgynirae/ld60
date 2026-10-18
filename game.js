@@ -72,9 +72,23 @@ function placeholderDrop(event) {
   const placeholder = event.target.parentElement;
   const html = event.dataTransfer.getData("text/html");
   const newdiv = document.createElement("div");
-  newdiv.classList.add("b");
+  newdiv.classList.add("content-item");
   newdiv.innerHTML = html;
+
+  const controls = document.createElement("div");
+  controls.classList.add("controls");
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Remove";
+  deleteButton.addEventListener("click", () => deleteItem(newdiv));
+  controls.append(deleteButton);
+  newdiv.prepend(controls);
+
   placeholder.replaceWith(createPlaceholder(), newdiv, createPlaceholder());
+}
+
+function deleteItem(item) {
+  item.nextElementSibling.remove();
+  item.remove();
 }
 
 function createInitialPlaceholders() {
