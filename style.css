@@ -4,6 +4,10 @@
 	padding: 0;
 }
 
+pre {
+	font-family: inherit;
+}
+
 html {
 	background: black;
 	color: white;
@@ -62,7 +66,8 @@ html {
 		margin-top: 1rem;
 	}
 
-	p {
+	p,
+	pre {
 		margin-top: 0.5rem;
 	}
 }
