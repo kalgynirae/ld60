@@ -41,15 +41,17 @@ function createPlaceholder() {
   const placeholder = document.createElement("div");
   placeholder.classList.add("placeholder");
   placeholder.style.display = "none";
-  placeholder.textContent = "[drop here]";
+  placeholder.innerHTML = "<div>[insert here]</div>";
   placeholder.addEventListener("dragover", (e) => e.preventDefault());
+  placeholder.addEventListener("dragenter", () => placeholder.classList.add("hover"));
+  placeholder.addEventListener("dragleave", () => placeholder.classList.remove("hover"));
   placeholder.addEventListener("drop", placeholderDrop);
   return placeholder;
 }
 
 function placeholderDrop(event) {
   event.preventDefault();
-  const placeholder = event.target;
+  const placeholder = event.target.parentElement;
   const html = event.dataTransfer.getData("text/html");
   const newdiv = document.createElement("div");
   newdiv.classList.add("b");
