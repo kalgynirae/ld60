@@ -41,6 +41,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll('input[name=content-background]').forEach((input) => {
+    input.addEventListener("change", (e) => {
+      if (input.checked) {
+        const columns = document.querySelector(".columns");
+        if (input.value === "dark") {
+        	columns.style.backgroundColor = "rgb(24, 26, 27)";
+        } else {
+        	columns.style.backgroundColor = input.value;
+        }
+        if (input.value === "dark" || input.value === "black") {
+        	document.querySelector(".monitor").style.color = "white";
+        } else {
+        	document.querySelector(".monitor").style.color = "black";
+        }
+      }
+    });
+  });
+
   document.querySelectorAll(".placeable").forEach((placeable) => {
     placeable.draggable = true;
   });
