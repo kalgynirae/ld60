@@ -36,15 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".select-ashley").addEventListener('click', () => {
 	  selectClient("ashley");
+		playPhoneRingingAnimation(true);
   });
   document.querySelector(".select-grandma").addEventListener('click', () => {
 	  selectClient("grandma");
+		playPhoneRingingAnimation(true);
   });
   document.querySelector(".select-kyle").addEventListener('click', () => {
   	selectClient("kyle");
+	  playPhoneRingingAnimation(true);
   });
   document.querySelector(".ring-phone").addEventListener('click', () => {
-		playPhoneRingingAnimation();
+		playPhoneRingingAnimation(false);
   });
 
   document.querySelector(".client-accept-request").addEventListener('click', () => {
@@ -87,7 +90,7 @@ function createInitialPlaceholders() {
 
 const dialogTracks = {
   "ashley": {
-  	"intro": "hi im ashley",
+  	"intro": "helloooooo can you make me a mykoolhomepage pretty please??? all the cool kids in school have one and i need u 2 help me cuz u can get past the age verificajun thingy. ill be sooooo gratefull for the rest of my life!!! xoxo",
     "always": [
       "do you know the STAR * BOYZ?? ofcourse you do everyone does their the best!!! can you add a bunch of stuff for them?? i L.O.V.E. kyle soooo much!!! he doesn't know it yet but he's my husband!!!",
       "hiii so i was thinking that i should talk more about the love of my life oreo!!! he's my precious baby and i've had him since i was 7 and he's the bestest. please add my furbaby to my homepage thxx <3",
@@ -99,13 +102,13 @@ const dialogTracks = {
     "background-color": "rgba(48, 127, 253, 0.95)",
   },
   "grandma": {
-  	"intro": "hi im grandma",
+  	"intro": 'Hello Dearie, my name is Meredith P., but you can just call me Grandma. I was hoping you could help me set up a "Kool" Home Page so I can connect more with my granddaughter Kayla. I will thank you with lots of Kisses and Cookies through the E-Mail :-)',
   	"always": [],
    	"sometimes": [],
     "background-color": "rgba(255, 133, 163, 0.95)",
   },
   "kyle": {
-  	"intro": "hi im kyle",
+  	"intro": "hey my guy my names kyle can you make a homepage for me? i have plenty of money dont worry about that but keep it on the downlow okay?",
   	"always": [
 	   	[
 	    	"sup so my manager just called. he says I should make a mykoolhomepage to help promote the STAR * BOYZ upcoming album. ugh. im hiring you to do it cuz i cant be arsed",
@@ -155,11 +158,16 @@ const getClientText = () => {
   return "i'm out of ideas. do whatever else you'd like...!";
 };
 
-const showClientAsk = () => {
+const showClientAsk = isNewClient => {
   const client = document.querySelector(".client");
   client.style.visibility = "visible";
 
-  const text = getClientText();
+  let text = "uh oh if you see this, that's a bug!"
+  if (isNewClient) {
+		text = dialogTracks[selectedClient]["intro"];
+	} else {
+		text = getClientText();
+	}
 
   const clientName = document.querySelector(".client-name");
   clientName.innerHTML = selectedClient.charAt(0).toUpperCase() + selectedClient.slice(1);
@@ -181,6 +189,11 @@ const showClientAsk = () => {
 
   setTimeout(() => {
 	  const acceptRequest = document.querySelector(".client-accept-request");
+		if (isNewClient) {
+			acceptRequest.textContent = "Accept client"
+		} else {
+			acceptRequest.textContent = "Okay.";
+		}
 	  acceptRequest.classList.add("show");
   }, text.length * 25 + 500);
 };
@@ -193,7 +206,7 @@ const closeClientAsk = () => {
   isInDialogState = false;
 };
 
-const playPhoneRingingAnimation = () => {
+const playPhoneRingingAnimation = isNewClient => {
   if (isInDialogState) {
     return;
   }
@@ -212,7 +225,7 @@ const playPhoneRingingAnimation = () => {
               phone.style.visibility = "hidden";
 
               setTimeout(() => {
-                  showClientAsk();
+                  showClientAsk(isNewClient);
               }, 750);
           }, 750);
       }, 750);
@@ -221,7 +234,7 @@ const playPhoneRingingAnimation = () => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'c') {
-    playPhoneRingingAnimation();
+    playPhoneRingingAnimation(false);
   }
 });
 
