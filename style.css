@@ -80,7 +80,7 @@ html {
 	cursor: pointer;
 
 	.powerbutton-neutral,
-	.powerbutton-on {
+	.powerbutton-off {
 		display: none;
 	}
 
@@ -135,7 +135,7 @@ html {
 		border: solid 2px cyan;
 	}
 
-	&:last-child >div {
+	&:last-child>div {
 		height: 25rem;
 		transform: none;
 	}
@@ -169,12 +169,12 @@ html {
 
 .notepad {
 	position: absolute;
-	top: 16px;
+	top: 25px;
 	right: 0;
-	width: 340px;
-	height: 517px;
+	width: 450px;
+	height: 550px;
 
-	/* background-color: red; */
+	background-color: #888;
 
 	color: black;
 	padding: 0.5em;
