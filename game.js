@@ -106,13 +106,18 @@ function placeholderDrop(event) {
 }
 
 function deleteItem(item) {
-  item.nextElementSibling.remove();
+	if (item.nextElementSibling.classList.contains("placeholder")) {
+	  item.nextElementSibling.remove();
+	}
   item.remove();
 }
 
 function createInitialPlaceholders() {
+	const initialText = document.createElement("div");
+  initialText.classList.add("initial-text");
+  initialText.textContent = "(Drag content here to place it!)";
+	document.querySelector(".monitor-content").prepend(initialText);
   document.querySelectorAll(".columns > div").forEach((div) => {
-    div.append(createContentItem("<div class=initial-text>(Drag content here to place it!)</div>"));
     div.append(createPlaceholder());
   });
 }

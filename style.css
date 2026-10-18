@@ -142,9 +142,11 @@ html {
 }
 
 .initial-text {
-	height: 25rem;
+	height: 98%;
+	width: 98%;
 	display: grid;
 	place-items: center;
+	position: absolute;
 }
 
 .content-item {
