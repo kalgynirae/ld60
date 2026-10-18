@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
       placeholder.style.display = "block";
       e.dataTransfer.setData("text/html", e.target.querySelector(".contents").innerHTML);
     });
+
+    document.querySelectorAll(".initial-text").forEach((placeholder) => {
+      placeholder.style.display = "none";
+    });
   });
   document.addEventListener("dragend", (e) => {
     document.querySelectorAll(".placeholder").forEach((placeholder) => {
@@ -99,13 +103,8 @@ function deleteItem(item) {
 
 function createInitialPlaceholders() {
   document.querySelectorAll(".columns > div").forEach((div) => {
+    div.append(createContentItem("<div class=initial-text>(Drag content here to place it!)</div>"));
     div.append(createPlaceholder());
-    div.append(createContentItem("<p>(Drag content here to place it!)</p>"));
-    Array.from(div.children).forEach((e) => {
-      if (!e.classList.contains("placeholder")) {
-        e.after(createPlaceholder());
-      }
-    });
   });
 }
 
