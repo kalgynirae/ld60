@@ -167,6 +167,38 @@ html {
 	}
 }
 
+.small-vertical-space {
+	height: 1rem;
+}
+
+.med-vertical-space {
+	height: 2rem;
+}
+
+.large-vertical-space {
+	height: 3rem;
+}
+
+.horizontal-line {
+	border-bottom: thin solid;
+}
+
+.thick-horizontal-line {
+	border-bottom: thick solid;
+}
+
+.dashed-horizontal-line {
+	border-bottom: thin dashed;
+}
+
+.dotted-horizontal-line {
+	border-bottom: thin dotted;
+}
+
+.double-horizontal-line {
+	border-bottom: double;
+}
+
 .notepad {
 	position: absolute;
 	top: 25px;
