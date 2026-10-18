@@ -126,7 +126,7 @@ const dialogTracks = {
   	"intro": 'Hello Dearie, my name is Meredith P., but you can just call me Grandma. I was hoping you could help me set up a "Kool" Home Page so I can connect more with my granddaughter Kayla. I will thank you with lots of Kisses and Cookies through the E-Mail :-)',
   	"always": [
 	   	"Hey Pumpkin, I don't know what is hip with the children these days but could you add a little more Sparkle and Pizzazz to my profile? Appreciate you lots, dear!",
-			`Hey Sweetie, could you make sure to add a "Profile Photo" to my Home Page? I used to be quite a looker back in my day, you know. I'm sure you can imagine that I would turn heads on the streets, probably because I'm tall too.`,
+			`Hey Sweetie, could you make sure to add a "Profile Photo" to my Home Page? I used to be quite a looker back in my day, you know. You might not believe it but I was quite rebellious. Some people have even told me that I have mean eyes! That helped me out in a pinch sometimes too.`,
 			"Hello Sweetheart, could you add my granddaughter Kayla to my Home Page? She knows everything about this Web-Site and I am getting a bit Old for the Tech these days. I'm just so proud of her. That honey bunches of oats is the joy of my life!",
 	   ],
    	"sometimes": [
