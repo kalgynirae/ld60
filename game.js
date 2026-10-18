@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       	const thirdColumn = document.querySelector(".third-column");
         const columns = document.querySelector(".columns");
       	if (input.value === "three") {
-       		thirdColumn.style.display = "inherit";
+       		thirdColumn.style.removeProperty('display');
          	columns.style.gridTemplateColumns = "repeat(3, 1fr)";
        	} else {
         	thirdColumn.style.display = "none";
@@ -235,6 +235,30 @@ const selectClient = clientName => {
 	selectedClientSometimesDialogs = getShuffledCopy(dialogTracks[selectedClient]["sometimes"]);
 	sometimesIndex = 0;
 	document.querySelector(".client").style.backgroundColor = dialogTracks[selectedClient]["background-color"];
+
+	document.querySelectorAll(".client-ashley").forEach(elem => {
+		if (clientName === "ashley") {
+			elem.style.removeProperty('display');
+		} else {
+			elem.style.display = "none";
+		}
+	});
+
+	document.querySelectorAll(".client-grandma").forEach(elem => {
+		if (clientName === "grandma") {
+			elem.style.removeProperty('display');
+		} else {
+			elem.style.display = "none";
+		}
+	});
+
+	document.querySelectorAll(".client-kyle").forEach(elem => {
+		if (clientName === "kyle") {
+			elem.style.removeProperty('display');
+		} else {
+			elem.style.display = "none";
+		}
+	});
 };
 
 let dialogState = "none";
