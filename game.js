@@ -17,12 +17,26 @@ document.addEventListener("DOMContentLoaded", () => {
       	const thirdColumn = document.querySelector(".third-column");
         const columns = document.querySelector(".columns");
       	if (input.value === "three") {
-       		thirdColumn.style.visibility = "visible";
+       		thirdColumn.style.display = "inherit";
          	columns.style.gridTemplateColumns = "repeat(3, 1fr)";
        	} else {
-        	thirdColumn.style.visibility = "hidden";
+        	thirdColumn.style.display = "none";
         	columns.style.gridTemplateColumns = "repeat(2, 1fr)";
         }
+      }
+    });
+  });
+
+  document.querySelectorAll('input[name=border-color]').forEach((input) => {
+    input.addEventListener("change", (e) => {
+      if (input.checked) {
+        document.querySelectorAll(".columns > div").forEach((div) => {
+	      	if (input.value === "none") {
+	     			div.style.border = input.value;
+	       	} else {
+	        	div.style.border = `medium solid ${input.value}`;
+	        }
+        });
       }
     });
   });

@@ -93,13 +93,14 @@ html {
 .columns {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	align-items: start;
 	column-gap: 0.5rem;
 	margin: 0.5rem;
 
 	>div {
 		display: flex;
 		flex-direction: column;
-		padding-bottom: 10rem;
+		margin-bottom: 10rem;
 		text-align: center;
 	}
 
@@ -113,10 +114,6 @@ html {
 	pre {
 		margin-top: 0.5rem;
 	}
-}
-
-.third-column {
-	visibility: hidden;
 }
 
 .placeholder {
@@ -147,8 +144,8 @@ html {
 }
 
 .initial-text {
-	height: 98%;
-	width: 98%;
+	height: 95%;
+	width: 96%;
 	display: grid;
 	place-items: center;
 	position: absolute;
