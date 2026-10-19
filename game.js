@@ -123,12 +123,51 @@ document.addEventListener("DOMContentLoaded", () => {
     showClientAsk();
   });
 
-  loadMusic();
-
-  document.querySelector(".powerbutton").addEventListener("click", () => {
-    playMusic();
+  loadMusic().then(() => {
+    musicLoaded = true;
+    if (pageResourcesLoaded) enablePowerButton();
   });
 });
+
+window.addEventListener("load", () => {
+  pageResourcesLoaded = true;
+  if (musicLoaded) enablePowerButton();
+});
+
+let pageResourcesLoaded = false;
+let musicLoaded = false;
+let poweredOn = false;
+
+async function enablePowerButton() {
+  document.querySelector(".loading > div").textContent = "Loaded.";
+  document.querySelector(".loading > progress").value = 1;
+
+  document.querySelector(".powerbutton").addEventListener("click", () => {
+    poweredOn = true;
+    startGame();
+  });
+  while (true) {
+    await new Promise(r => setTimeout(r, 800));
+    if (poweredOn) break;
+    document.querySelector(".powerbutton-neutral").style.display = "none";
+    document.querySelector(".powerbutton-off").style.display = "block";
+    await new Promise(r => setTimeout(r, 1200));
+    if (poweredOn) break;
+    document.querySelector(".powerbutton-off").style.display = "none";
+    document.querySelector(".powerbutton-neutral").style.display = "block";
+  }
+}
+
+async function startGame() {
+  document.querySelector(".powerbutton-neutral").style.display = "none";
+  document.querySelector(".powerbutton-off").style.display = "none";
+  document.querySelector(".powerbutton-on").style.display = "block";
+  document.querySelector(".monitor").style.visibility = "visible";
+  document.querySelector(".loading").style.display = "none";
+  playMusic();
+
+  // TODO
+}
 
 function createPlaceholder() {
   const placeholder = document.createElement("div");
