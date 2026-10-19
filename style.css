@@ -14,6 +14,11 @@ html {
 	text-align: center;
 }
 
+.pagetitle {
+	font-size: 1.2rem;
+	margin-bottom: 0.5rem;
+}
+
 .gamearea {
 	width: 1200px;
 	height: 800px;
@@ -69,6 +74,10 @@ html {
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
+
+	div:last-child {
+		visibility: hidden;
+	}
 }
 
 .loading,

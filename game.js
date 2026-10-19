@@ -151,8 +151,9 @@ let musicLoaded = false;
 let poweredOn = false;
 
 async function enablePowerButton() {
-  document.querySelector(".loading > div").textContent = "Loaded.";
+  document.querySelector(".loading > div:first-child").textContent = "Loaded.";
   document.querySelector(".loading > progress").value = 1;
+  document.querySelector(".loading > div:last-child").style.visibility = "visible";
 
   document.querySelector(".powerbutton").addEventListener("click", () => {
     startGame();
