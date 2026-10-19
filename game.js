@@ -381,6 +381,7 @@ async function loadMusic() {
 }
 
 async function playMusic() {
+  if (musicNode !== null) return;
   audioContext = new AudioContext();
   musicGainNode = audioContext.createGain();
   musicGainNode.gain.value = 0.6;
