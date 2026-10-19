@@ -324,6 +324,10 @@ html {
 	input[type=radio] {
 		margin-left: 0.5rem;
 	}
+
+	label {
+		white-space: nowrap;
+	}
 }
 
 .palette {
@@ -735,11 +739,11 @@ html {
 }
 
 .bg-blue {
-	background: blue;
+	background: dodgerblue;
 }
 
 .bg-red {
-	background: red;
+	background: crimson;
 }
 
 .bg-bubbles {

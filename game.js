@@ -524,6 +524,7 @@ const hideCredits = () => {
 }
 
 const clearMonitorContent = () => {
+	document.querySelector(".monitor").style.color = "black";
 	const monitorContent = document.querySelector(".monitor-content");
 	monitorContent.innerHTML = '<div class=columns><div></div><div></div><div class="third-column" style="display: none;"></div></div>';
 }
