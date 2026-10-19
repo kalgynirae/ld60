@@ -242,6 +242,8 @@ html {
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: auto 1fr;
 
+	visibility: hidden;
+
 	details+details {
 		summary {
 			border-left: 1px solid #000;

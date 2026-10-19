@@ -90,22 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  createInitialPlaceholders();
-
-  selectClient("ashley");
-
   document.querySelectorAll(".select-ashley").forEach(button => button.addEventListener('click', () => {
-  	hideClientPicker();
   	selectClient("ashley");
 		ringPhone();
   }));
   document.querySelectorAll(".select-grandma").forEach(button => button.addEventListener('click', () => {
-  	hideClientPicker();
   	selectClient("grandma");
 		ringPhone();
   }));
   document.querySelectorAll(".select-kyle").forEach(button => button.addEventListener('click', () => {
-  	hideClientPicker();
   	selectClient("kyle");
 	  ringPhone();
   }));
@@ -116,7 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		ringPhone();
   });
 
-  document.querySelector(".client-accept-request").addEventListener('click', () => {
+  const acceptRequest = document.querySelector(".client-accept-request");
+  acceptRequest.addEventListener('click', () => {
+		if (acceptRequest.textContent === "Accept client") {
+			createInitialPlaceholders();
+			showNotepadContents();
+		}
   	closeClientAsk();
   });
 
@@ -172,7 +170,7 @@ async function startGame() {
   document.querySelector(".loading").style.display = "none";
   playMusic();
 
-  // TODO
+  showClientPicker();
 }
 
 function createPlaceholder() {
@@ -279,6 +277,8 @@ let selectedClientSometimesDialogs = [];
 let sometimesIndex = 0;
 
 const selectClient = clientName => {
+	hideClientPicker();
+
   isNewClient = true;
 	selectedClient = clientName;
 	selectedClientAlwaysDialogs = getShuffledCopy(dialogTracks[selectedClient]["always"]);
@@ -449,4 +449,9 @@ const showClientPicker = () => {
 const hideClientPicker = () => {
   const client = document.querySelector(".client-picker-box");
   client.style.visibility = "hidden";
+}
+
+const showNotepadContents = () => {
+  const client = document.querySelector(".notepad");
+  client.style.visibility = "visible";
 }
