@@ -94,17 +94,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   selectClient("ashley");
 
-  document.querySelector(".select-ashley").addEventListener('click', () => {
-	  selectClient("ashley");
+  document.querySelectorAll(".select-ashley").forEach(button => button.addEventListener('click', () => {
+  	hideClientPicker();
+  	selectClient("ashley");
 		ringPhone();
-  });
-  document.querySelector(".select-grandma").addEventListener('click', () => {
-	  selectClient("grandma");
+  }));
+  document.querySelectorAll(".select-grandma").forEach(button => button.addEventListener('click', () => {
+  	hideClientPicker();
+  	selectClient("grandma");
 		ringPhone();
-  });
-  document.querySelector(".select-kyle").addEventListener('click', () => {
+  }));
+  document.querySelectorAll(".select-kyle").forEach(button => button.addEventListener('click', () => {
+  	hideClientPicker();
   	selectClient("kyle");
 	  ringPhone();
+  }));
+  document.querySelector(".show-client-picker").addEventListener('click', () => {
+		showClientPicker();
   });
   document.querySelector(".ring-phone").addEventListener('click', () => {
 		ringPhone();
@@ -433,4 +439,14 @@ async function playMusic() {
   });
   musicNode.connect(musicGainNode);
   musicNode.start(0);
+}
+
+const showClientPicker = () => {
+  const client = document.querySelector(".client-picker-box");
+  client.style.visibility = "visible";
+}
+
+const hideClientPicker = () => {
+  const client = document.querySelector(".client-picker-box");
+  client.style.visibility = "hidden";
 }
