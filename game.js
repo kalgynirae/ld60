@@ -122,6 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".phone-background").classList.remove("ringing");
     showClientAsk();
   });
+
+  loadMusic();
+
+  document.querySelector(".powerbutton").addEventListener("click", () => {
+    playMusic();
+  });
 });
 
 function createPlaceholder() {
@@ -355,4 +361,36 @@ function getShuffledCopy(array) {
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
   return newArray;
+}
+
+const offlineContext = new OfflineAudioContext(2, 1, 44100);
+let audioContext = null;
+
+let music = null;
+let musicGainNode = null;
+let musicNode = null;
+
+async function load(path) {
+  const response = await fetch(path);
+  const buffer = await response.arrayBuffer();
+  return await offlineContext.decodeAudioData(buffer);
+}
+
+async function loadMusic() {
+  music = await load("/audio/music.mp3");
+}
+
+async function playMusic() {
+  audioContext = new AudioContext();
+  musicGainNode = audioContext.createGain();
+  musicGainNode.gain.value = 0.6;
+  musicGainNode.connect(audioContext.destination);
+  musicNode = new AudioBufferSourceNode(audioContext, {
+    buffer: music,
+    loop: true,
+    loopStart: 0,
+    loopEnd: music.duration,
+  });
+  musicNode.connect(musicGainNode);
+  musicNode.start(0);
 }
