@@ -144,7 +144,6 @@ async function enablePowerButton() {
   document.querySelector(".loading > progress").value = 1;
 
   document.querySelector(".powerbutton").addEventListener("click", () => {
-    poweredOn = true;
     startGame();
   });
   while (true) {
@@ -160,6 +159,8 @@ async function enablePowerButton() {
 }
 
 async function startGame() {
+  if (poweredOn) return;
+  poweredOn = true;
   document.querySelector(".powerbutton-neutral").style.display = "none";
   document.querySelector(".powerbutton-off").style.display = "none";
   document.querySelector(".powerbutton-on").style.display = "block";
