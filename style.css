@@ -46,6 +46,14 @@ html {
 			animation: vibrate 1.5s infinite;
 		}
 	}
+
+	.notepad-background {
+		position: absolute;
+		bottom: 358px;
+		right: 3px;
+		image-rendering: pixelated;
+		width: 450px;
+	}
 }
 
 .backdrop {
@@ -210,8 +218,6 @@ html {
 	right: 0;
 	width: 450px;
 	height: 550px;
-
-	background-color: #888;
 
 	color: black;
 	padding: 0.5em;
