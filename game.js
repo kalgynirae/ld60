@@ -124,6 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dialogState = "speaking";
     phone.classList.remove("ringing");
     document.querySelector(".phone-background").classList.remove("ringing");
+    ringingNode.stop();
+    ringingNode = null;
     showClientAsk();
   });
 
@@ -385,6 +387,7 @@ const ringPhone = () => {
   dialogState = "ringing";
   document.querySelector(".phone").classList.add("ringing");
   document.querySelector(".phone-background").classList.add("ringing");
+  playRinging();
 };
 
 document.addEventListener('keydown', (event) => {
@@ -411,9 +414,12 @@ function getShuffledCopy(array) {
 const offlineContext = new OfflineAudioContext(2, 1, 44100);
 let audioContext = null;
 
-let music = null;
+let musicBuf = null;
 let musicGainNode = null;
 let musicNode = null;
+let ringingBuf = null;
+let ringingGainNode = null;
+let ringingNode = null;
 
 async function load(path) {
   const response = await fetch(path);
@@ -422,23 +428,43 @@ async function load(path) {
 }
 
 async function loadMusic() {
-  music = await load("/audio/music.mp3");
+  musicBuf = await load("/audio/music.mp3");
+  ringingBuf = await load("/audio/ring.mp3");
 }
 
 async function playMusic() {
   if (musicNode !== null) return;
   audioContext = new AudioContext();
   musicGainNode = audioContext.createGain();
-  musicGainNode.gain.value = 0.6;
+  musicGainNode.gain.value = 0.5;
   musicGainNode.connect(audioContext.destination);
   musicNode = new AudioBufferSourceNode(audioContext, {
-    buffer: music,
+    buffer: musicBuf,
     loop: true,
     loopStart: 0,
-    loopEnd: music.duration,
+    loopEnd: musicBuf.duration,
   });
   musicNode.connect(musicGainNode);
-  musicNode.start(0);
+  musicNode.start();
+}
+
+function playRinging() {
+  if (ringingNode !== null) {
+    ringingNode.start();
+    return;
+  }
+  audioContext = new AudioContext();
+  ringingGainNode = audioContext.createGain();
+  ringingGainNode.gain.value = 0.8;
+  ringingGainNode.connect(audioContext.destination);
+  ringingNode = new AudioBufferSourceNode(audioContext, {
+    buffer: ringingBuf,
+    loop: true,
+    loopStart: 0,
+    loopEnd: ringingBuf.duration,
+  });
+  ringingNode.connect(ringingGainNode);
+  ringingNode.start();
 }
 
 const showClientPicker = () => {
