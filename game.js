@@ -92,15 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".select-ashley").forEach(button => button.addEventListener('click', () => {
   	selectClient("ashley");
-		ringPhone();
+   	setTimeout(() => ringPhone(), 2000);
   }));
   document.querySelectorAll(".select-grandma").forEach(button => button.addEventListener('click', () => {
   	selectClient("grandma");
-		ringPhone();
+		setTimeout(() => ringPhone(), 2000);
   }));
   document.querySelectorAll(".select-kyle").forEach(button => button.addEventListener('click', () => {
   	selectClient("kyle");
-	  ringPhone();
+	  setTimeout(() => ringPhone(), 2000);
   }));
   document.querySelector(".show-client-picker").addEventListener('click', () => {
 		showClientPicker();
@@ -114,13 +114,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (acceptRequest.textContent === "Accept client") {
 			createInitialPlaceholders();
 			showNotepadContents();
+			isNewClient = false;
 		}
   	closeClientAsk();
   });
 
   const phone = document.querySelector(".phone");
   phone.addEventListener("click", () => {
-    if (dialogState != "ringing") return;
+    if (dialogState !== "ringing") return;
     dialogState = "speaking";
     phone.classList.remove("ringing");
     document.querySelector(".phone-background").classList.remove("ringing");
@@ -210,6 +211,11 @@ function placeholderDrop(event) {
   const placeholder = event.target.parentElement;
   const html = event.dataTransfer.getData("text/html");
   placeholder.replaceWith(createPlaceholder(), createContentItem(html), createPlaceholder());
+
+  if (dialogState === "none" && alwaysIndex < selectedClientAlwaysDialogs.length) {
+  	dialogState = "waiting-to-ring";
+  	setTimeout(() => ringPhone(), 5000);
+  }
 }
 
 function deleteItem(item) {
@@ -383,24 +389,12 @@ const closeClientAsk = () => {
 };
 
 const ringPhone = () => {
-  if (dialogState != "none") return;
+  if (dialogState !== "none" && dialogState !== "waiting-to-ring") return;
   dialogState = "ringing";
   document.querySelector(".phone").classList.add("ringing");
   document.querySelector(".phone-background").classList.add("ringing");
   playRinging();
 };
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'c') {
-    ringPhone();
-  }
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'v') {
-    closeClientAsk();
-  }
-});
 
 function getShuffledCopy(array) {
   const newArray = [...array];
