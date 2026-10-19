@@ -102,12 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
   	selectClient("kyle");
 	  setTimeout(() => ringPhone(), 2000);
   }));
-  document.querySelector(".show-client-picker").addEventListener('click', () => {
-		showClientPicker();
-  });
-  document.querySelector(".ring-phone").addEventListener('click', () => {
-		ringPhone();
-  });
 
   const acceptRequest = document.querySelector(".client-accept-request");
   acceptRequest.addEventListener('click', () => {
