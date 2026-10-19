@@ -136,9 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelector("#play-again-button").addEventListener('click', () => {
-  	hideCredits();
-   	clearMonitorContent();
-		showClientPicker();
+    location.reload();
   });
 
   const phone = document.querySelector(".phone");
