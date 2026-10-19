@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         content.classList.remove("font-sans");
         content.classList.remove("font-serif");
         content.classList.add(`font-${input.value}`);
+        waitToRing();
       }
     });
   });
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         	thirdColumn.style.display = "none";
         	columns.style.gridTemplateColumns = "repeat(2, 1fr)";
         }
+        waitToRing();
       }
     });
   });
@@ -37,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	        	div.style.border = `medium solid ${input.value}`;
 	        }
         });
+        waitToRing();
       }
     });
   });
@@ -55,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
         	document.querySelector(".monitor").style.color = "black";
         }
+        waitToRing();
       }
     });
   });
@@ -74,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         monitor.classList.remove("bg-starboyz");
         monitor.classList.remove("bg-stripes");
         monitor.classList.add(`bg-${input.value}`);
+        waitToRing();
       }
     });
   });
@@ -231,7 +236,11 @@ function placeholderDrop(event) {
   const html = event.dataTransfer.getData("text/html");
   placeholder.replaceWith(createPlaceholder(), createContentItem(html), createPlaceholder());
 
-  if (dialogState === "none" && alwaysIndex < selectedClientAlwaysDialogs.length) {
+  waitToRing();
+}
+
+function waitToRing() {
+	if (dialogState === "none" && alwaysIndex < selectedClientAlwaysDialogs.length) {
   	dialogState = "waiting-to-ring";
   	setTimeout(() => ringPhone(), 5000);
   } else if (alwaysIndex === selectedClientAlwaysDialogs.length) {
