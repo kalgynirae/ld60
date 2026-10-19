@@ -49,7 +49,7 @@ html {
 
 	.notepad-background {
 		position: absolute;
-		top: -8px;
+		top: 17px;
 		right: 3px;
 		image-rendering: pixelated;
 		width: 450px;
@@ -229,7 +229,7 @@ html {
 
 .notepad {
 	position: absolute;
-	top: 25px;
+	top: 50px;
 	right: 0;
 	width: 450px;
 	height: 550px;
