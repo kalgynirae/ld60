@@ -82,7 +82,6 @@ html {
 
 .monitor {
 	visibility: hidden;
-	background: white;
 	border-radius: 2px;
 	box-shadow: inset 0 0 60px 10px rgb(0 0 0 / 0.5);
 	color: black;
@@ -659,4 +658,50 @@ html {
 	96% {
 		transform: translateX(0px);
 	}
+}
+
+.bg-white {
+	background: white;
+}
+
+.bg-pink {
+	background: pink;
+}
+
+.bg-blue {
+	background: blue;
+}
+
+.bg-red {
+	background: red;
+}
+
+.bg-bubbles {
+	background-image: url("/images/bg_bubbles.png");
+	background-repeat: repeat;
+}
+
+.bg-flowers {
+	background-image: url("/images/bg_flowers.png");
+	background-repeat: repeat;
+}
+
+.bg-hearts {
+	background-image: url("/images/bg_hearts.png");
+	background-repeat: repeat;
+}
+
+.bg-skull {
+	background-image: url("/images/bg_skull.png");
+	background-repeat: repeat;
+}
+
+.bg-starboyz {
+	background-image: url("/images/bg_starboyz.png");
+	background-repeat: repeat;
+}
+
+.bg-stripes {
+	background-image: url("/images/bg_stripes.png");
+	background-repeat: repeat;
 }

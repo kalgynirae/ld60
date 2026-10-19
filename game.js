@@ -61,8 +61,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll('input[name=homepage-background]').forEach((input) => {
     input.addEventListener("change", (e) => {
+      const monitor = document.querySelector(".monitor");
       if (input.checked) {
-        document.querySelector(".monitor").style.background = input.value;
+        monitor.classList.remove("bg-white");
+        monitor.classList.remove("bg-pink");
+        monitor.classList.remove("bg-blue");
+        monitor.classList.remove("bg-red");
+        monitor.classList.remove("bg-bubbles");
+        monitor.classList.remove("bg-flowers");
+        monitor.classList.remove("bg-hearts");
+        monitor.classList.remove("bg-skull");
+        monitor.classList.remove("bg-starboyz");
+        monitor.classList.remove("bg-stripes");
+        monitor.classList.add(`bg-${input.value}`);
       }
     });
   });
