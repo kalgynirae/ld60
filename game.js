@@ -266,6 +266,8 @@ function createInitialPlaceholders() {
   });
 }
 
+const MOBILE_FRIENDLY = "Hello Dearie, Could You Make My Home Page Mobile Friendly?";
+
 const dialogTracks = {
   "ashley": {
   	"intro": "helloooooo can you make me a mykoolhomepage pretty please??? all the cool kids in school have one and i need u 2 help me cuz u can get past the age verificajun thingy. ill be sooooo gratefull for the rest of my life!!! xoxo",
@@ -276,6 +278,7 @@ const dialogTracks = {
     ],
     "sometimes": [
       "i saw that everyone has a best friends section so i wuz thinking that i should have one too and i'd like to put my bestie jessica at the top because i luvluvluv that girl to death!!!",
+      "there r so many gud background options;; i relly relly want to have a kool one too",
     ],
     "background-color": "rgba(48, 127, 253, 0.95)",
   },
@@ -289,6 +292,7 @@ const dialogTracks = {
    	"sometimes": [
     	"Hello Sweet Pea, I was thinking of you today when I was crocheting. I used to grow sweet peas in my garden, but these days it's been getting harder to tend to my flowers due to my arthritis. I think it'll get better with my new joint medication though. I'm looking forward to getting to go outside and play with Kayla more.",
       "Hey Hon, I heard a song yesterday on the radio that made me so nostalgic. I don't remember the name but I'm sure you can find it using the Inter-Net. Could you add it to my Home Page please? Thank you bunches!",
+      MOBILE_FRIENDLY,
     ],
     "background-color": "rgba(255, 133, 163, 0.95)",
   },
@@ -300,10 +304,12 @@ const dialogTracks = {
 	     	"sup im kyle. you might have heard of me…. im in the STAR * BOYZ……. i want to make a profile that can't be traced back to me. MAKE SURE THERE IS NOTHING ON THERE ABOUT THE STAR * BOYZ. im sick of us",
 	    ],
 			"could u add a profile photo of me? u know what i look like, right? no? well im kind of a dark and brooding type. super tall. SUPER buff,,,, yeah",
+			"yo. i saw someone else's homepage had a sick background. make my background look kool too thx",
 	   ],
    	"sometimes": [
     	"hey i saw you put some kind of colorful stuff on there. that's okay i guess but could you add some more stuff thats black? black is the color of my soul",
      	"hey i just got home from a press trip to the usa. i don't want anyone to think im from that country can u add some british stuff to my profile???",
+      "wassup make sure to use serif fonts:: the edges of the letters reflect the edges of my soul",
     ],
     "background-color": "rgba(40, 40, 43, 0.95)",
   },
@@ -404,6 +410,8 @@ const showClientAsk = () => {
 	  const acceptRequest = document.querySelector(".client-accept-request");
 		if (isNewClient) {
 			acceptRequest.textContent = "Accept client"
+		} else if (text === MOBILE_FRIENDLY) {
+			acceptRequest.textContent = "...what's mobile?";
 		} else {
 			acceptRequest.textContent = "Okay.";
 		}
