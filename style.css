@@ -359,12 +359,6 @@ html {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 
-	.client-photo {
-		display: grid;
-		place-items: center;
-		font-size: 64px;
-	}
-
 	.client-photo-box {
 		cursor: pointer;
 
@@ -400,6 +394,10 @@ html {
 	height: 120px;
 
 	background: darkgrey;
+
+	display: grid;
+	place-items: center;
+	font-size: 64px;
 }
 
 .client-name {
