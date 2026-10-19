@@ -124,6 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
   	closeClientAsk();
   });
 
+  document.querySelector("#finish-button").addEventListener('click', () => {
+		hideNotepadContents();
+		hideFinishButton();
+		showCredits();
+  });
+
+  document.querySelector("#play-again-button").addEventListener('click', () => {
+  	hideCredits();
+   	clearMonitorContent();
+		showClientPicker();
+  });
+
   const phone = document.querySelector(".phone");
   phone.addEventListener("click", () => {
     if (dialogState !== "ringing") return;
@@ -222,6 +234,8 @@ function placeholderDrop(event) {
   if (dialogState === "none" && alwaysIndex < selectedClientAlwaysDialogs.length) {
   	dialogState = "waiting-to-ring";
   	setTimeout(() => ringPhone(), 5000);
+  } else if (alwaysIndex === selectedClientAlwaysDialogs.length) {
+  	setTimeout(() => showFinishButton(), 10000);
   }
 }
 
@@ -236,6 +250,7 @@ function createInitialPlaceholders() {
 	const initialText = document.createElement("div");
   initialText.classList.add("initial-text");
   initialText.textContent = "(Drag content here to place it!)";
+	clearMonitorContent();
 	document.querySelector(".monitor-content").prepend(initialText);
   document.querySelectorAll(".columns > div").forEach((div) => {
     div.append(createPlaceholder());
@@ -481,4 +496,34 @@ const hideClientPicker = () => {
 const showNotepadContents = () => {
   const client = document.querySelector(".notepad");
   client.style.visibility = "visible";
+}
+
+const hideNotepadContents = () => {
+  const client = document.querySelector(".notepad");
+  client.style.visibility = "hidden";
+}
+
+const showFinishButton = () => {
+  const client = document.querySelector("#finish-button");
+  client.style.visibility = "visible";
+}
+
+const hideFinishButton = () => {
+  const client = document.querySelector("#finish-button");
+  client.style.visibility = "hidden";
+}
+
+const showCredits = () => {
+  const client = document.querySelector(".credits-box");
+  client.style.visibility = "visible";
+}
+
+const hideCredits = () => {
+  const client = document.querySelector(".credits-box");
+  client.style.visibility = "hidden";
+}
+
+const clearMonitorContent = () => {
+	const monitorContent = document.querySelector(".monitor-content");
+	monitorContent.innerHTML = '<div class=columns><div></div><div></div><div class="third-column" style="display: none;"></div></div>';
 }
